@@ -1,0 +1,3 @@
+SV001,Nguyen Van A,20,8.5
+SV002,Le Thi B,21,9.0
+SV003,Tran Van C,22,7.8
