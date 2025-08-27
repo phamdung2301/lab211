@@ -4,6 +4,9 @@
  */
 package object;
 
+import Validation.Validation;
+
+
 /**
  *
  * @author ADMIN
@@ -27,8 +30,8 @@ public class HexaDecimal {
         this.hexa = hexa;
     }
     
-    public String convertHexaToBinary(){
-        String decimal = this.convertHexaToDecimal(this.hexa);
+    public String convertHexaToBinary(String hexa){
+        String decimal = this.convertHexaToDecimal(hexa);
         Decimal d = new Decimal();
         return d.convertDecimalToBinary(decimal);
     }
@@ -49,5 +52,21 @@ public class HexaDecimal {
             log--;
         }
         return Integer.toString(re);
+    }
+    
+    public void inputHexa(){
+        hexa = Validation.checkInputHexa();
+    }
+    
+    public void convertFromHexa(String hexa){
+        int choice = Validation.getchoice("HexaDecimal", "Binary", "Decimal");
+        switch(choice){
+            case 1:
+                System.out.println("Binary: "+ convertHexaToBinary(hexa));
+                break;
+            case 2:
+                System.out.println("Decimal: "+ convertHexaToDecimal(hexa));
+                break;
+        }
     }
 }

@@ -4,6 +4,8 @@
  */
 package object;
 
+import Validation.Validation;
+
 /**
  *
  * @author ADMIN
@@ -28,6 +30,17 @@ public class Decimal {
     }
     
     public String convertDecimalToBinary(String decimal){
+        int n = Integer.parseInt(decimal);
+        String re = "";
+        while(n != 0){
+            re += Integer.toString(n % 2);
+            n = n/2;
+        }
+        String reversed = new StringBuilder(re).reverse().toString();
+        return reversed;
+    }
+    
+    public String convertDecimalToBinary(){
         int n = Integer.parseInt(decimal);
         String re = "";
         while(n != 0){
@@ -71,8 +84,8 @@ public class Decimal {
         return reversed;        
     }
     
-    public String convertaDecimalToHexaUsingArr(){
-        int n = Integer.parseInt(this.decimal);
+    public String convertDecimalToHexaUsingArr(){
+        int n = Integer.parseInt(decimal);
         StringBuilder sb = new StringBuilder();
         char[] hexChars = "0123456789ABCDEF".toCharArray();
         
@@ -82,5 +95,21 @@ public class Decimal {
             n /= 16;
         }
         return sb.toString();
+    }
+    
+    public void inputDecimal(){
+        decimal = Validation.checkInlutDecimal();
+    }
+    
+    public void convertFromDecimal(String decimal){
+        int choice = Validation.getchoice("Decimal", "Binary", "HexaDecimal");
+        switch(choice){
+            case 1:
+                System.out.println("Binary: "+ convertDecimalToBinary(decimal));
+                break;
+            case 2:
+                System.out.println("Hexadecimal: "+ convertDecimalToHexa(decimal));
+                break;
+        }
     }
 }
