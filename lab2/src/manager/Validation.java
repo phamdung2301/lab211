@@ -61,7 +61,13 @@ public class Validation {
                 SimpleDateFormat sf = new SimpleDateFormat("dd-MM-yyyy");
                 Date date = sf.parse(result);
                 if(result.equalsIgnoreCase(sf.format(date))){
-                    return result;
+                    Date today = new Date();
+                    if(date.before(today)){
+                        System.out.println("Date cannot be in the past. Please enter again: ");
+                    }
+                    else{
+                        return result;
+                    }
                 }else{
                     System.out.print("Date not valid. Please enter again: ");
                 }
